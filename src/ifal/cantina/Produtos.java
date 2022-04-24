@@ -10,17 +10,14 @@ public class Produtos {
 
     private int qtd_vendida;
 
-    public Produtos(String nome, String descricao, double preco_compra, double preco_venda, int qtd_comprada, int qtdDisponivel) throws Exception {
-        if(preco_compra <= 0 || preco_venda <= 0 || preco_compra >= preco_venda){
-            throw new Exception("Valor de venda invalido!");
-        }else{
-            this.nome = nome;
-            this.descricao = descricao;
-            this.preco_compra = preco_compra;
-            this.preco_venda = preco_venda;
-            this.qtd_comprada =  qtd_comprada;
-            this.qtdDisponivel = qtdDisponivel;
-        }
+    public Produtos(String nome, String descricao, double preco_compra, double preco_venda, int qtd_comprada){
+        // Verifico se os valores são válidos antes de cadastrar no estoque
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco_compra = preco_compra;
+        this.preco_venda = preco_venda;
+        this.qtd_comprada =  qtd_comprada;
+        this.qtdDisponivel = qtd_comprada;
     }
 
     public String getNome() {
@@ -76,4 +73,22 @@ public class Produtos {
     }
 
 
+    public int getQtdDisponivel() {
+        return qtdDisponivel;
+    }
+
+    public void setQtdDisponivel(int qtdDisponivel) {
+        this.qtdDisponivel = qtdDisponivel;
+    }
+
+    @Override
+    public String toString(){
+        String teste = "";
+        teste += getNome();
+        teste += getDescricao();
+        teste += getPreco_compra();
+        teste += getPreco_venda();
+        teste += getQtd_comprada();
+        return teste;
+    }
 }

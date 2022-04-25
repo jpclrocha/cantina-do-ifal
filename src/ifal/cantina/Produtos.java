@@ -1,94 +1,89 @@
 package ifal.cantina;
 
 public class Produtos {
-    private String nome;
-    private String descricao;
-    private double preco_compra;
-    private double preco_venda;
-    private int qtd_comprada;
-    private int qtdDisponivel;
+    private String name;
+    private String description;
+    private double buyPrice;
+    private double sellPrice;
+    private int amountBought;
+    private int availableAmount;
+    private int amountSold;
 
-    private int qtd_vendida;
-
-    public Produtos(String nome, String descricao, double preco_compra, double preco_venda, int qtd_comprada){
+    public Produtos(String name, String description, double buyPrice, double sellPrice, int amountBought){
         // Verifico se os valores são válidos antes de cadastrar no estoque
-        this.nome = nome;
-        this.descricao = descricao;
-        this.preco_compra = preco_compra;
-        this.preco_venda = preco_venda;
-        this.qtd_comprada =  qtd_comprada;
-        this.qtdDisponivel = qtd_comprada;
+        this.name = name;
+        this.description = description;
+        this.buyPrice = buyPrice;
+        this.sellPrice = sellPrice;
+        this.amountBought =  amountBought;
+        this.availableAmount = amountBought;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getQtd_vendida() {
-        return qtd_vendida;
+    public int getAmountSold() {
+        return amountSold;
     }
 
-    public void setQtd_vendida(int qtd_vendida) {
-        this.qtd_vendida = qtd_vendida;
+    public String getDescription() {
+        return description;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public double getBuyPrice() {
+        return buyPrice;
     }
 
-    public double getPreco_compra() {
-        return preco_compra;
+    public void setBuyPrice(double buyPrice) {
+        this.buyPrice = buyPrice;
     }
 
-    public void setPreco_compra(double preco_compra) {
-        this.preco_compra = preco_compra;
+    public double getSellPrice() {
+        return sellPrice;
     }
 
-    public double getPreco_venda() {
-        return preco_venda;
+    public void setSellPrice(double sellPrice) {
+        this.sellPrice = sellPrice;
     }
 
-    public void setPreco_venda(double preco_venda) {
-        this.preco_venda = preco_venda;
+    public double getAmountBought() {
+        return amountBought;
     }
 
-    public double getQtd_comprada() {
-        return qtd_comprada;
+    public void setAmountBought(int amountBought) {
+        this.amountBought = amountBought;
     }
 
-    public void setQtd_comprada(int qtd_comprada) {
-        this.qtd_comprada = qtd_comprada;
-    }
-
-    public void vendeItem(int quantidade){
-        this.qtdDisponivel -= quantidade;
+    public void sellItem(int amount){
+        this.availableAmount -= amount;
     }
 
 
-    public int getQtdDisponivel() {
-        return qtdDisponivel;
+    public int getAvailableAmount() {
+        return availableAmount;
     }
 
-    public void setQtdDisponivel(int qtdDisponivel) {
-        this.qtdDisponivel = qtdDisponivel;
+    public void setAvailableAmount(int availableAmount) {
+        this.availableAmount = availableAmount;
     }
 
     @Override
     public String toString(){
-        String teste = "";
-        teste += getNome();
-        teste += getDescricao();
-        teste += getPreco_compra();
-        teste += getPreco_venda();
-        teste += getQtd_comprada();
-        return teste;
+        String word = "";
+        word += "Name: "+ getName() + "\n";
+        word += "Description: " + getDescription() + "\n";
+        word += "Buy price: " + getBuyPrice() + "\n";
+        word += "Sell price: " + getSellPrice() + "\n";
+        word += "Amount bought: " + getAmountSold() + "\n";
+        return word;
     }
 }

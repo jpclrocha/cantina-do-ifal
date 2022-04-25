@@ -35,4 +35,11 @@ public class Estoque {
         }
 
     }
+
+    @Override
+    public String toString(){
+        String teste = "";
+        teste += estoqueDeProdutos.toString();
+        return teste;
+    }
 }

@@ -1,7 +1,7 @@
 # CantinaDoIfal
  Java project for oop classes
-Team:
-João Pedro de Castro Laranjeira Rocha
-Denis de Melo Chaves
-Clauderlan Batista Alves
-Bruna Karolinne Pereira Camilo
+Team: <br>
+João Pedro de Castro Laranjeira Rocha <br>
+Denis de Melo Chaves <br>
+Clauderlan Batista Alves <br>
+Bruna Karolinne Pereira Camilo <br>

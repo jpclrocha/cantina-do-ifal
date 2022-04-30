@@ -13,7 +13,7 @@ public class Estoque {
 
         System.out.println("Digite a descrição do produto: ");
         String descricao = input.nextLine();
-
+       
         System.out.println("Digite o preço de compra do produto: ");
         double preco_compra = input.nextDouble();
 
@@ -30,18 +30,18 @@ public class Estoque {
         } else if (quantidade <= 0) {
             throw new Exception("A quantidade de itens comprados é inválida");
         } else {
-            Produtos teste = new Produtos(nome, descricao, preco_compra, preco_venda, quantidade);
+        	Produtos teste = new Produtos(nome.toLowerCase(), descricao, preco_compra, preco_venda, quantidade);
             
             estoqueDeProdutos.add(teste);
         }
 
     }
-    public void vende(Produtos nome, int quantidadeVendida){
+    public void vende(String nome, int quantidadeVendida){
         for (Produtos x : estoqueDeProdutos){
-            if(x.getName() == nome){
-                x.sellItem(quantidadeVendida);
-                
-            }
+        	if(x.getName().equals(nome)) {
+        		x.sellItem(quantidadeVendida);
+        		System.out.println(x.toString());
+        	}
         }
     }
 

@@ -70,7 +70,7 @@ public class Produtos {
     		this.toString();
     	}
     	else {
-    		System.out.println("Quantidade Indisponível.");
+    		System.out.println("Quantidade Indisponï¿½vel.");
     	}
         
     }
@@ -84,14 +84,16 @@ public class Produtos {
         this.availableAmount = availableAmount;
     }
 
+    public String QtdeNome(){
+        return "Nome: " + getName() + " Quantidade Disponivel: " + getAvailableAmount();
+    }
+
     @Override
     public String toString(){
         String word = "";
         word += "Name: "+ getName() + "\n";
         word += "Description: " + getDescription() + "\n";
-        word += "Buy price: " + getBuyPrice() + "\n";
-        word += "Sell price: " + getSellPrice() + "\n";
-        word += "Amount bought: " + getAmountSold() + "\n";
+        word += "Available Amount: " + getAvailableAmount();
         return word;
     }
 }

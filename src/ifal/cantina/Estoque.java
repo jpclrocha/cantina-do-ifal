@@ -46,8 +46,6 @@ public class Estoque {
     }
 
     
-    
-
     @Override
     public String toString(){
         String teste = "";

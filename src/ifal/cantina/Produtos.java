@@ -64,7 +64,15 @@ public class Produtos {
     }
 
     public void sellItem(int amount){
-        this.availableAmount -= amount;
+    	if (this.availableAmount >= amount ) {
+    		this.availableAmount -= amount;
+    		this.amountSold += amount;
+    		this.toString();
+    	}
+    	else {
+    		System.out.println("Quantidade Indisponível.");
+    	}
+        
     }
 
 

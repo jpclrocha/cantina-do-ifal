@@ -43,8 +43,6 @@ public class Estoque {
                 if(x.getName().equals(nome)) {
                     x.sellItem(quantidadeVenda);
                     System.out.println(x.toString());
-                }else{
-                    throw new IllegalArgumentException("Nao existe nenhum produto com esse nome");
                 }
             }
         }

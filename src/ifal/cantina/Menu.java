@@ -10,7 +10,7 @@ Estoque estoque = new Estoque();
 		System.out.println("Bem vindo, escolha uma opcao do menu!");
 		while(numero != 7){
 			Scanner input = new Scanner(System.in);
-	  		System.out.println("1 - Cadastro de Produtos \n2 - Venda de produtos \n3 - Resumo de produtos pela descricao \n4 - Resumo de produtos pela quantidade disponível \n5 - Itens com baixa quantidade no estoque \n6 - Lucro/Prejuízo \n7 - Sair");
+	  		System.out.println("1 - Cadastro de Produtos \n2 - Venda de produtos \n3 - Resumo de produtos pela descricao \n4 - Resumo de produtos pela quantidade disponivel \n5 - Itens com baixa quantidade no estoque \n6 - Lucro/Prejuizo \n7 - Sair");
 	  		numero = input.nextInt();
 	   
 	  		if(numero == 1) {
@@ -57,8 +57,8 @@ Estoque estoque = new Estoque();
 			}
 
 			else if(numero == 6){
-				int vendas = 0;
-				int compras = 0;
+				double vendas = 0;
+				double compras = 0;
 				System.out.println("Lucro / Prejuizo");
 				for(Produtos e : estoque.estoqueDeProdutos){
 					vendas += e.getAmountSold() * e.getSellPrice();
@@ -68,7 +68,7 @@ Estoque estoque = new Estoque();
 				if(vendas > compras){
 					System.out.println("Total de lucro: R$" + (vendas - compras));
 				}else if(vendas < compras){
-					System.out.println("Total de prejuízo: R$" + (vendas - compras));
+					System.out.println("Total de prejuizo: R$" + (vendas - compras));
 				}else{
 					System.out.println("Voce nao teve lucro nem prejuizo.");
 				}

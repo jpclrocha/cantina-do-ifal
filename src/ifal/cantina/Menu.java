@@ -7,29 +7,32 @@ public class Menu{
 Estoque estoque = new Estoque();
 	public void mainMenu() {
   		int numero = 0;
+		System.out.println("Bem vindo, escolha uma opcao do menu!");
 		while(numero != 7){
 			Scanner input = new Scanner(System.in);
-	  		System.out.println("Bem vindo, escolha uma opcao do menu!");
 	  		System.out.println("1 - Cadastro de Produtos \n2 - Venda de produtos \n3 - Resumo de produtos pela descricao \n4 - Resumo de produtos pela quantidade disponível \n5 - Itens com baixa quantidade no estoque \n6 - Lucro/Prejuízo \n7 - Sair");
 	  		numero = input.nextInt();
 	   
 	  		if(numero == 1) {
-	  			System.out.println("cadastro de produtos");
 	  			try {
 	  				estoque.cadastraProduto();
 	  			}
-	  			catch(Exception e) {
-	  				e.getMessage();
+	  			catch(IllegalArgumentException iae) {
+					System.out.println(iae.getMessage());
 	  			}
 			   
 	  		}
 	  		else if(numero == 2){
-	  			System.out.println("Digite o nome do produto: ");
-	  			String nome = input.next();
+	  			try{
+					System.out.println("Digite o nome do produto: ");
+					String nome = input.next();
 
-	  			System.out.println("Digite a quantidade de produtos: ");
-	  	        int quantidade = input.nextInt();
-	  			estoque.vende(nome, quantidade);
+					System.out.println("Digite a quantidade de produtos: ");
+					int quantidade = input.nextInt();
+					estoque.vende(nome, quantidade);
+				}catch (IllegalArgumentException iae){
+					System.out.println(iae.getMessage());
+				}
 	  		}
 			else if(numero == 3){
 				System.out.println("Resumo dos itens pela descricao");
@@ -56,7 +59,7 @@ Estoque estoque = new Estoque();
 			else if(numero == 6){
 				int vendas = 0;
 				int compras = 0;
-				System.out.println("Lucro / Prejuízo");
+				System.out.println("Lucro / Prejuizo");
 				for(Produtos e : estoque.estoqueDeProdutos){
 					vendas += e.getAmountSold() * e.getSellPrice();
 					compras += e.getAmountBought() * e.getBuyPrice();

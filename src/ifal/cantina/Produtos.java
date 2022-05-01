@@ -70,7 +70,7 @@ public class Produtos {
     		this.toString();
     	}
     	else {
-    		System.out.println("Quantidade Indispon�vel.");
+    		System.out.println("Quantidade Indisponivel.");
     	}
         
     }
@@ -91,9 +91,9 @@ public class Produtos {
     @Override
     public String toString(){
         String word = "";
-        word += "Name: "+ getName() + "\n";
-        word += "Description: " + getDescription() + "\n";
-        word += "Available Amount: " + getAvailableAmount();
+        word += "Nome: "+ getName() + "\n";
+        word += "Descricao: " + getDescription() + "\n";
+        word += "Quantidade disponivel: " + getAvailableAmount();
         return word;
     }
 }

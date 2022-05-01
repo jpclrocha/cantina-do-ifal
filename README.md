@@ -12,3 +12,8 @@ https://www.alura.com.br/apostila-java-orientacao-objetos/collections-framework#
 
 Documentação da oracle disponível em: <br>
 https://docs.oracle.com/javase/8/docs/api/
+
+# Dificuldades
+ - Conseguimos realizar os requisitos funcionais e de desenvolvimento do projeto; <br>
+ - Nossa dificuldade foi utilizar com comparators , para fazer a parte de resumo dos estoques, mas revisamos as apostilas e a documentação e conseguimos cumprir com todos os requisitos do projeto.
+ 

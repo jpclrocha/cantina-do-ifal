@@ -1,15 +1,16 @@
 package ifal.cantina;
 
 public class Produtos {
-    private String name;
-    private String description;
-    private double buyPrice;
-    private double sellPrice;
-    private int amountBought;
-    private int availableAmount;
-    private int amountSold;
+        private int id;
+        private String name;
+        private String description;
+        private double buyPrice;
+        private double sellPrice;
+        private int amountBought;
+        private int availableAmount;
+        private int amountSold;
 
-    public Produtos(String name, String description, double buyPrice, double sellPrice, int amountBought){
+    public Produtos(String name, String description, double buyPrice, double sellPrice, int amountBought, int amountSold){
         // Verifico se os valores são válidos antes de cadastrar no estoque
         this.name = name;
         this.description = description;
@@ -17,8 +18,22 @@ public class Produtos {
         this.sellPrice = sellPrice;
         this.amountBought =  amountBought;
         this.availableAmount = amountBought;
+        this.amountSold = amountSold;
     }
 
+    public Produtos(int id, String nome, String descricao, double buyPrice, double sellPrice, int amountBought, int amountBought1, int amountSold) {
+        this.id = id;
+        this.name = nome;
+        this.description = descricao;
+        this.buyPrice = buyPrice;
+        this.sellPrice = sellPrice;
+        this.amountBought =  amountBought;
+        this.availableAmount = amountBought1;
+        this.amountSold = amountSold;
+    }
+
+    public int getId(){return id;}
+    public void setId(int id){this.id = id;}
     public String getName() {
         return name;
     }
@@ -29,6 +44,9 @@ public class Produtos {
 
     public int getAmountSold() {
         return amountSold;
+    }
+    public void setAmountSold(int amountSold) {
+        this.amountSold = amountSold;
     }
 
     public String getDescription() {
@@ -55,7 +73,7 @@ public class Produtos {
         this.sellPrice = sellPrice;
     }
 
-    public double getAmountBought() {
+    public int getAmountBought() {
         return amountBought;
     }
 
@@ -63,14 +81,17 @@ public class Produtos {
         this.amountBought = amountBought;
     }
 
-    public void sellItem(int amount){
+    public boolean sellItem(int amount){
+
     	if (this.availableAmount >= amount ) {
     		this.availableAmount -= amount;
     		this.amountSold += amount;
     		this.toString();
+            return true;
     	}
     	else {
-    		System.out.println("Quantidade Indispon�vel.");
+    		System.out.println("Quantidade Indispon�vel.");
+            return false;
     	}
         
     }
@@ -84,14 +105,17 @@ public class Produtos {
         this.availableAmount = availableAmount;
     }
 
+
+    public String QtdeNome(){
+        return "Nome: " + getName() + " Quantidade Disponivel: " + getAvailableAmount();
+    }
+
     @Override
     public String toString(){
         String word = "";
         word += "Name: "+ getName() + "\n";
         word += "Description: " + getDescription() + "\n";
-        word += "Buy price: " + getBuyPrice() + "\n";
-        word += "Sell price: " + getSellPrice() + "\n";
-        word += "Amount bought: " + getAmountSold() + "\n";
+        word += "Available Amount: " + getAvailableAmount();
         return word;
     }
 }

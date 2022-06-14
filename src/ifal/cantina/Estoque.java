@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Estoque {
-    ArrayList<Produtos> estoqueDeProdutos = new ArrayList<>();
+    ProdutoDAO produtoDAO = new ProdutoDAO();
+    VendaDAO vendaDAO = new VendaDAO();
+    ArrayList<Produtos> estoqueDeProdutos = produtoDAO.readProduto();
 
     public void cadastraProduto() throws Exception {
         Scanner input = new Scanner(System.in);
@@ -30,19 +32,31 @@ public class Estoque {
         } else if (quantidade <= 0) {
             throw new Exception("A quantidade de itens comprados é inválida");
         } else {
-        	Produtos teste = new Produtos(nome.toLowerCase(), descricao, preco_compra, preco_venda, quantidade);
-            
+            /* Guardar a informação dos itens do estoque da cantina no mySQL */
+        	Produtos teste = new Produtos(nome.toLowerCase(), descricao, preco_compra, preco_venda, quantidade, 0);
+            produtoDAO.insertProduto(teste);
             estoqueDeProdutos.add(teste);
         }
 
     }
-    public void vende(String nome, int quantidadeVendida){
-        for (Produtos x : estoqueDeProdutos){
+    public void vende(String nome, int quantidadeVendida, double desconto, String formaDePagamento){
+        for (Produtos x : produtoDAO.readProduto()){
         	if(x.getName().equals(nome)) {
-        		x.sellItem(quantidadeVendida);
+
+                /* Dar baixa nos itens vendidos do estoque no mySQL */
+                if (x.sellItem(quantidadeVendida)){
+                    produtoDAO.updateProduto(x, x.getId());
+                    vendaDAO.insertVenda(x, desconto, formaDePagamento);
+                }
         		System.out.println(x.toString());
         	}
         }
+    }
+    public void vendasMes(){
+        vendaDAO.vendasMes();
+    }
+    public void vendasDia(){
+        vendaDAO.vendasDia();
     }
 
     

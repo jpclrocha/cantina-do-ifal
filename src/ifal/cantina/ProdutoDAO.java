@@ -18,14 +18,14 @@ public class ProdutoDAO {
         }
     }
 
-    public ArrayList<Produtos> read(){
+    public ArrayList<Produtos> readProduto(){
         String sql = "SELECT * FROM produto";
         ArrayList<Produtos> estoqueDeProdutos = new ArrayList<Produtos>();
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
             while (result.next()){
-                Produtos produto = new Produtos(result.getInt("id"), result.getString("nome"), result.getString("descricao"), result.getDouble("buyPrice"), result.getDouble("sellPrice"), result.getInt("amountBought"), result.getInt("amountBought"), result.getInt("amountSold"));
+                Produtos produto = new Produtos(result.getInt("id"), result.getString("nome"), result.getString("descricao"), result.getDouble("buyPrice"), result.getDouble("sellPrice"), result.getInt("amountBought"), result.getInt("availableAmount"), result.getInt("amountSold"));
                 estoqueDeProdutos.add(produto);
 
             }
@@ -36,7 +36,7 @@ public class ProdutoDAO {
         return estoqueDeProdutos;
     }
 
-    public boolean insert(Produtos produto){
+    public boolean insertProduto(Produtos produto){
         String sql = "INSERT INTO produto(nome, descricao, buyPrice, sellPrice, amountBought, availableAmount, amountSold) VALUES (?,?,?,?,?,?,?)";
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -55,10 +55,10 @@ public class ProdutoDAO {
         }
     }
 
-    public boolean update(Produtos produto){
+    public boolean updateProduto(Produtos produto, int id){
         try{
-            String sql = "UPDATE produto SET nome=?, descricao=?, buyPrice=?, sellPrice=?, amountBought=?, availableAmount=?, amountSold=? WHERE id =" + produto.getId();
-
+            String sql = "UPDATE produto SET nome=?, descricao=?, buyPrice=?, sellPrice=?, amountBought=?, availableAmount=?, amountSold=? WHERE id =" + id;
+            System.out.println(produto.getAvailableAmount());
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, produto.getName());
             stmt.setString(2, produto.getDescription());
@@ -76,7 +76,7 @@ public class ProdutoDAO {
         }
 
     }
-    public boolean delete(Integer id){
+    public boolean deleteProduto(Integer id){
         String sql = "DELETE FROM produto WHERE id =" + id;
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);

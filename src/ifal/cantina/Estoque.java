@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Estoque {
-    ProdutoDAO dao = new ProdutoDAO();
-    ArrayList<Produtos> estoqueDeProdutos = dao.read();
+    ProdutoDAO produtoDAO = new ProdutoDAO();
+    VendaDAO vendaDAO = new VendaDAO();
+    ArrayList<Produtos> estoqueDeProdutos = produtoDAO.readProduto();
 
     public void cadastraProduto() throws Exception {
         Scanner input = new Scanner(System.in);
@@ -33,22 +34,29 @@ public class Estoque {
         } else {
             /* Guardar a informação dos itens do estoque da cantina no mySQL */
         	Produtos teste = new Produtos(nome.toLowerCase(), descricao, preco_compra, preco_venda, quantidade, 0);
-            dao.insert(teste);
+            produtoDAO.insertProduto(teste);
             estoqueDeProdutos.add(teste);
         }
 
     }
-    public void vende(String nome, int quantidadeVendida){
-        for (Produtos x : estoqueDeProdutos){
+    public void vende(String nome, int quantidadeVendida, double desconto, String formaDePagamento){
+        for (Produtos x : produtoDAO.readProduto()){
         	if(x.getName().equals(nome)) {
 
                 /* Dar baixa nos itens vendidos do estoque no mySQL */
                 if (x.sellItem(quantidadeVendida)){
-                    dao.update(x);
+                    produtoDAO.updateProduto(x, x.getId());
+                    vendaDAO.insertVenda(x, desconto, formaDePagamento);
                 }
         		System.out.println(x.toString());
         	}
         }
+    }
+    public void vendasMes(){
+        vendaDAO.vendasMes();
+    }
+    public void vendasDia(){
+        vendaDAO.vendasDia();
     }
 
     

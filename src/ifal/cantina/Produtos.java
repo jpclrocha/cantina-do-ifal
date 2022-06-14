@@ -95,6 +95,15 @@ public class Produtos {
     	}
         
     }
+    public void atualizaProduto(String name, String description, double buyPrice, double sellPrice, int amountBought, int amountSold){
+        this.name = name;
+        this.description = description;
+        this.buyPrice = buyPrice;
+        this.sellPrice = sellPrice;
+        this.amountBought =  amountBought;
+        this.availableAmount = amountBought;
+        this.amountSold = amountSold;
+    }
 
 
     public int getAvailableAmount() {

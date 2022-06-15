@@ -14,6 +14,6 @@ Documentação da oracle disponível em: <br>
 https://docs.oracle.com/javase/8/docs/api/
 
 # Dificuldades
- - Conseguimos realizar os requisitos funcionais e de desenvolvimento do projeto; <br>
- - Nossa dificuldade foi utilizar com comparators , para fazer a parte de resumo dos estoques, mas revisamos as apostilas e a documentação e conseguimos cumprir com todos os requisitos do projeto.
+ - Conseguimos realizar a maioria dos requisitos funcionais e de desenvolvimento do projeto , faltando na parte da venda alterar no banco o total de produtos vendidos.
+ - Nao conseguimos fazer essa parte pois da erro na querry e nao conseguimos fazer a parte dos resumos de lucro/ prejuizo, pois precisariamos do item anterior funcionando para isso; <br>
  

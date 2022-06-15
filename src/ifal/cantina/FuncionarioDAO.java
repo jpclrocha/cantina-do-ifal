@@ -8,11 +8,7 @@ public class FuncionarioDAO {
 
     public FuncionarioDAO(){
         try{
-            String url = "jdbc:mysql://localhost:3306/jdbc";
-            String login = "root";
-            String senha = "";
-            this.connection = null;
-            this.connection = DriverManager.getConnection(url, login, senha);
+            this.connection = new ConnectionFactory().getConnection();
             System.out.println("Conectado.");
         } catch (SQLException e){
             System.out.println(e.getMessage());
@@ -26,7 +22,11 @@ public class FuncionarioDAO {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet result = stmt.executeQuery();
             while (result.next()){
-                Funcionario funcionario = new Funcionario(result.getInt("codigo"), result.getString("nome"), result.getString("senha"));
+                Funcionario funcionario = new Funcionario();
+                funcionario.setCodigo(result.getInt("codigo"));
+                funcionario.setNome(result.getString("nome"));
+                funcionario.setSenha(result.getString("senha"));
+
                 funcionarios.add(funcionario);
             }
         } catch (SQLException e) {

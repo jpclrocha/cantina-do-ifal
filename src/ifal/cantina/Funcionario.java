@@ -7,8 +7,8 @@ public class Funcionario {
     private String senha;
     private int codigo;
 
-    public Funcionario(int codigo, String nome, String senha){
-        this.codigo = codigo;
+    public Funcionario(){}
+    public Funcionario( String nome, String senha){
         this.nome = nome;
         this.senha = senha;
     }
@@ -43,5 +43,11 @@ public class Funcionario {
         }
         return false;
     }
-
+    public String toString(){
+        String palavra = "";
+        palavra += "Nome do funcionario: "+getNome();
+        palavra += "Codigo do funcionario: "+getCodigo();
+        palavra += "Senha do funcionario: "+getSenha();
+        return palavra;
+    }
 }

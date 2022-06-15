@@ -11,11 +11,7 @@ public class VendaDAO {
     private Connection connection;
     public VendaDAO(){
         try{
-            String url = "jdbc:mysql://localhost:3306/jdbc";
-            String login = "root";
-            String senha = "";
-            this.connection = null;
-            this.connection = DriverManager.getConnection(url, login, senha);
+            this.connection = new ConnectionFactory().getConnection();
             System.out.println("Conectado.");
         } catch (SQLException e){
             System.out.println(e.getMessage());

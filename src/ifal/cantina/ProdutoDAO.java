@@ -7,11 +7,7 @@ public class ProdutoDAO {
     private Connection connection;
     public ProdutoDAO(){
         try{
-            String url = "jdbc:mysql://localhost:3306/jdbc";
-            String login = "root";
-            String senha = "";
-            this.connection = null;
-            this.connection = DriverManager.getConnection(url, login, senha);
+            this.connection = new ConnectionFactory().getConnection();
             System.out.println("Conectado.");
         } catch (SQLException e){
             System.out.println(e.getMessage());
@@ -77,13 +73,28 @@ public class ProdutoDAO {
 
     }
     public boolean deleteProduto(Integer id){
-        String sql = "DELETE FROM produto WHERE id =" + id;
+        String sql = "DELETE FROM produto WHERE id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1,id);
             stmt.execute();
             return true;
         }catch (SQLException e){
             System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean vendeProduto(int id){
+        //com erro
+        String sql = "UPDATE PRODUTO SET amountSold += 1 where id == ?";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.executeUpdate(sql);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
             return false;
         }
     }

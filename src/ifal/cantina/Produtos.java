@@ -10,7 +10,7 @@ public class Produtos {
         private int availableAmount;
         private int amountSold;
 
-    public Produtos(String name, String description, double buyPrice, double sellPrice, int amountBought, int amountSold){
+    public Produtos(String name, String description, double buyPrice, double sellPrice, int amountBought){
         // Verifico se os valores são válidos antes de cadastrar no estoque
         this.name = name;
         this.description = description;
@@ -18,7 +18,7 @@ public class Produtos {
         this.sellPrice = sellPrice;
         this.amountBought =  amountBought;
         this.availableAmount = amountBought;
-        this.amountSold = amountSold;
+
     }
 
     public Produtos(int id, String nome, String descricao, double buyPrice, double sellPrice, int amountBought, int amountBought1, int amountSold) {
@@ -46,7 +46,7 @@ public class Produtos {
         return amountSold;
     }
     public void setAmountSold(int amountSold) {
-        this.amountSold = amountSold;
+        this.amountSold += amountSold;
     }
 
     public String getDescription() {

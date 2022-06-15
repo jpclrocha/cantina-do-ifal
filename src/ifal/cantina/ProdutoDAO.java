@@ -85,13 +85,20 @@ public class ProdutoDAO {
         }
     }
 
-    public boolean vendeProduto(int id){
-        //com erro
-        String sql = "UPDATE PRODUTO SET amountSold += 1 where id == ?";
+    public boolean vendeProduto(String produto,int quantidade, int id){
+        String sql = "UPDATE produto SET amountSold = ?, availableAmount = ? where id = " + id;
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, id);
-            stmt.executeUpdate(sql);
+            for (Produtos x : this.readProduto()){
+                if(x.getName().equals(produto)){
+                    if(x.sellItem(quantidade)){
+                        stmt.setInt(1, x.getAmountSold());
+                        stmt.setInt(2, x.getAvailableAmount());
+                    }
+                    else return false;
+                }
+            }
+            stmt.execute();
             return true;
         }catch (Exception e){
             e.printStackTrace();

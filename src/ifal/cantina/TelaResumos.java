@@ -30,4 +30,11 @@ public class TelaResumos extends JFrame{
     public static void main(String[] args) {
         TelaResumos tr = new TelaResumos();
     }
+    public void gerar(JTextField id, JTextField produtoName, JTextField qtd){
+        int codigo = Integer.parseInt(id.getText());
+        String produtoNome = produtoName.getText();
+        int quantidade = Integer.parseInt(qtd.getText());
+        ProdutoDAO produto =  new ProdutoDAO();
+        produto.vendeProduto(produtoNome,quantidade,codigo);
+    }
 }

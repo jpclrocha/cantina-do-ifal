@@ -33,17 +33,20 @@ public class VendaDAO {
         }
         return vendas;
     }
-    public boolean insertVenda(Produtos produto, double desconto, String formaDePagamento){
+    public boolean insertVenda(ArrayList<Produtos> produtos,String produtoNome, double desconto, String formaDePagamento, int quantidade){
         String sql = "INSERT INTO venda(data_venda, desconto, total_venda, forma_de_pagamento) VALUES (?,?,?,?)";
-
-        double valorTotal = produto.getSellPrice() - (produto.getSellPrice() * desconto / 100);
 
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
-            stmt.setDouble(2, desconto);
-            stmt.setDouble(3, valorTotal);
-            stmt.setString(4, formaDePagamento);
+            for(Produtos x : produtos){
+                if(x.getName().equals(produtoNome)){
+                    double valorTotal = (x.getSellPrice() - (x.getSellPrice() * desconto / 100)) * quantidade;
+                    stmt.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
+                    stmt.setDouble(2, desconto);
+                    stmt.setDouble(3, valorTotal);
+                    stmt.setString(4, formaDePagamento);
+                }
+            }
             stmt.execute();
             return true;
         }catch (SQLException e){

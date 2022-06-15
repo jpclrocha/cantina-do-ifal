@@ -111,7 +111,7 @@ public class Produtos {
     }
 
     public void setAvailableAmount(int availableAmount) {
-        this.availableAmount = availableAmount;
+        this.availableAmount -= availableAmount;
     }
 
 

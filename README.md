@@ -4,7 +4,7 @@ Denis de Melo Chaves <br>
 Clauderlan Batista Alves <br>
 Bruna Karolinne Pereira Camilo <br>
 # CantinaDoIfal
-Link para o video solicitado: https://youtu.be/dOikVv1mQWQ
+Link para o video solicitado: 
 
 Utilizei a apostila e a documentação da oracle para utilizar collections frameworks
 Apostila da caelum disponível em: <br> 

@@ -5,11 +5,11 @@ Clauderlan Batista Alves <br>
 Bruna Karolinne Pereira Camilo <br>
 # CantinaDoIfal
 
-Utilizei a apostila e a documentação da oracle para utilizar collections frameworks
-Apostila da caelum disponível em: <br> 
+Utilizei a apostila da Alura e a documentação da Oracle para utilizar collections frameworks <br>
+Apostila da Alura disponível em: <br> 
 https://www.alura.com.br/apostila-java-orientacao-objetos/collections-framework#arrays-sao-trabalhosas-utilizar-estrutura-de-dados <br>
 
-Documentação da oracle disponível em: <br>
+Documentação da Oracle disponível em: <br>
 https://docs.oracle.com/javase/8/docs/api/
 
 # Dificuldades

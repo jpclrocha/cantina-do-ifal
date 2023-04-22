@@ -17,7 +17,7 @@ Oracle documentation available at: <br>
 https://docs.oracle.com/javase/8/docs/api/
 
 # Difficulties
- - We were unable to do the profit and loss summaries part <br>
+ - We were unable to do the profit and loss summary<br>
  
  # Step by step
  - Create a database
